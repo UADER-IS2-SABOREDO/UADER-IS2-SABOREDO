@@ -20,9 +20,16 @@ def factorial(num):
             num -= 1
         return fact 
 
-if len(sys.argv) == 0:
-   print("Debe informar un número!")
-   sys.exit()
-num=int(sys.argv[1])
-print("Factorial ",num,"! es ", factorial(num)) 
-
+#Modificaciones de que si se omite el numero como argumento, lo solicite
+if len(sys.argv) == 1:  # Si el usuario no ingresó un número
+    try:
+        num = int(input("Ingrese un número: "))  # Pedir número manualmente
+    except ValueError:
+        print("Error: Debe ingresar un número entero.")
+        sys.exit(1)
+else:
+    try:
+        num = int(sys.argv[1])  # Convertir argumento en número
+    except ValueError:
+        print("Error: El argumento debe ser un número entero.")
+        sys.exit(1)
