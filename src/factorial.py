@@ -6,30 +6,30 @@
 #* Creative commons                                                        *
 #*-------------------------------------------------------------------------*
 import sys
-def factorial(num): 
-    if num < 0: 
-        print("Factorial de un número negativo no existe")
-        return 0
-    elif num == 0: 
-        return 1
-        
-    else: 
-        fact = 1
-        while(num > 1): 
-            fact *= num 
-            num -= 1
-        return fact 
 
-#Modificaciones de que si se omite el numero como argumento, lo solicite
-if len(sys.argv) == 1:  # Si el usuario no ingresó un número
+def factorial(n):
+    """ Calcula el factorial de un número n de forma recursiva. """
+    if n == 0 or n == 1:
+        return 1
+    return n * factorial(n - 1)
+
+if __name__ == "__main__":
+    # Si no hay argumento, pedir el número o rango manualmente
+    if len(sys.argv) != 2:
+        entrada = input("Ingrese un número o un rango (ej. 4-8): ")
+    else:
+        entrada = sys.argv[1]
+
     try:
-        num = int(input("Ingrese un número: "))  # Pedir número manualmente
+        if "-" in entrada:
+            desde, hasta = map(int, entrada.split("-"))
+            if desde > hasta:
+                print("Error: El primer número debe ser menor o igual al segundo.")
+            else:
+                for i in range(desde, hasta + 1):
+                    print(f"Factorial de {i} es {factorial(i)}")
+        else:
+            num = int(entrada)
+            print(f"Factorial de {num} es {factorial(num)}")
     except ValueError:
-        print("Error: Debe ingresar un número entero.")
-        sys.exit(1)
-else:
-    try:
-        num = int(sys.argv[1])  # Convertir argumento en número
-    except ValueError:
-        print("Error: El argumento debe ser un número entero.")
-        sys.exit(1)
+        print("Error: Entrada no válida. Debes ingresar un número o un rango válido.")
