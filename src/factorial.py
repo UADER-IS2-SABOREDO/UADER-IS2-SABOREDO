@@ -16,13 +16,23 @@ def factorial(n):
 if __name__ == "__main__":
     # Si no hay argumento, pedir el número o rango manualmente
     if len(sys.argv) != 2:
-        entrada = input("Ingrese un número o un rango (ej. 4-8): ")
+        entrada = input("Ingrese un número o un rango (ej. 4-8, -10, 20-): ")
     else:
         entrada = sys.argv[1]
 
     try:
         if "-" in entrada:
-            desde, hasta = map(int, entrada.split("-"))
+            partes = entrada.split("-")
+
+            if entrada.startswith("-"):  # Caso "-10" → de 1 a 10
+                hasta = int(partes[1])
+                desde = 1
+            elif entrada.endswith("-"):  # Caso "20-" → de 20 a 60
+                desde = int(partes[0])
+                hasta = 60
+            else:  # Caso normal "4-8"
+                desde, hasta = map(int, partes)
+
             if desde > hasta:
                 print("Error: El primer número debe ser menor o igual al segundo.")
             else:
@@ -31,5 +41,6 @@ if __name__ == "__main__":
         else:
             num = int(entrada)
             print(f"Factorial de {num} es {factorial(num)}")
+
     except ValueError:
         print("Error: Entrada no válida. Debes ingresar un número o un rango válido.")
