@@ -1,0 +1,43 @@
+Trabajo Práctico – API OpenAI con ChatGPT
+-----------------------------------------
+
+Resultados del análisis del archivo `chatgpt_consulta.py`
+
+Análisis con Multimetric:
+--------------------------
+- comment_ratio: 0.0  
+- cyclomatic_complexity: 2  
+- fanout_external: 0  
+- fanout_internal: 0  
+- halstead_bugprop: 0.001  
+- halstead_difficulty: 0.5  
+- halstead_effort: 1.0  
+- halstead_timerequired: 0.056  
+- halstead_volume: 2.0  
+- loc: 0  
+- maintainability_index: 0  
+- operands_sum: 0  
+- operands_uniq: 0  
+- operators_sum: 0  
+- operators_uniq: 0  
+- pylint: 100.0  
+- tiobe: 49.328  
+- tiobe_compiler: 0.0  
+- tiobe_complexity: 95.522  
+- tiobe_coverage: 100.0  
+- tiobe_duplication: 100.0  
+- tiobe_fanout: 100.0  
+- tiobe_functional: 0.0  
+- tiobe_security: 0.0  
+- tiobe_standard: 0.0  
+
+Análisis con PyLint:
+---------------------
+- Puntuación: 8.11 / 10  
+- C0301: Line too long (132/100)  
+- C0114: Missing module docstring  
+- C0116: Missing function or method docstring  
+- W0621: Redefining name 'consulta' from outer scope  
+- W0621: Redefining name 'respuesta' from outer scope  
+- W3101: Missing timeout argument for method 'requests.post'  
+- W0718: Catching too general exception 'Exception'  
